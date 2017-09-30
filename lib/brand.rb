@@ -1,10 +1,4 @@
 class Brand < ActiveRecord::Base
-  has_many :procedures
-  has_many :ingredients, through: :procedures
-  has_many :measurements
-
-  has_many :tags
-  has_many :categories, through: :tags
-
+has_and_belongs_to_many(:stores)
   validates(:name, :presence => true)
 end
