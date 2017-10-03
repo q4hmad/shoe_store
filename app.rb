@@ -22,12 +22,14 @@ erb(:errors)
   end
 end
 
-get('/each_store/:id/') do
-  @store = Store.find(params.fetch('id'))
-  erb(:store_details_page)
+get("/each_store/:id/") do
+  @store =Store.find(params.fetch("id").to_i())
+  erb(:store_edit)
 end
 
-get("/each_store/:id/edit") do
-  @store =Store.find(params.fetch("id").to_i())
-  erb(:store_details_page)
+patch("/update_store_name/:id") do
+  name = params.fetch("name")
+  @store = Store.find(params.fetch("id").to_i())
+  @store.update({:name => name})
+  erb(:store_edit)
 end
