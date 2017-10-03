@@ -3,20 +3,14 @@
   <h2>Shoe Distribution:</h2>
 <h3>Add a new store:</h3>
 <div class="form-control">
-  <form action="/" method="post">
+  <form action="/store_names" method="post">
     <label for="name">Select a store:</label>
     <input id="name" name="name" type="text">
     <button type="submit">Submit</button>
   </form>
 </div>
-
- <p>
- <% if @stores.any? %>
-<%= @stores.name %>
-
-<div class="form-control">
-  <form action="/" method="post">
-    <label for="brand">Brands:</label>
-    <input id="brand" name="brand" type="text">
-    <button type="submit">Submit</button>
-</div>
+<div>
+  <h3>Shoe Stores:</h3>
+  <% @stores.each do |store| %>
+  <h3><a href='/each_store/<%= store.id %>/'><%= store.name %></a></h3>
+  <% end %>

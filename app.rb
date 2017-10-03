@@ -11,19 +11,23 @@ get('/') do
   erb(:index)
 end
 
-post("/") do
+post("/store_names") do
+  @id = params[:id]
   @name = params["name"]
   @stores = Store.new({:name => @name, :id => nil})
-  @stores.save()
-  @stores = Store.all()
-    erb(:index)
+  if @stores.save()
+    redirect ('/')
+  else
+erb(:errors)
+  end
 end
 
-get('/store_edit/:id') do
-  @stores = Store.find(params[:id].to_i())
-  erb(:store_edit)
+get('/each_store/:id/') do
+  @store = Store.find(params.fetch('id'))
+  erb(:store_details_page)
 end
 
-get('/store_edit') do
-  erb(:store_edit)
+get("/each_store/:id/edit") do
+  @store =Store.find(params.fetch("id").to_i())
+  erb(:store_details_page)
 end
