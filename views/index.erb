@@ -1,23 +1,22 @@
-<h1>Shoe Distribution: Store and Inventory Information</h1>
 
-<p>Store List:</p>
-<ul>
-  <% if @stores.any? %>
-    <% @stores.each do |store| %>
-      <a href="/store/<%= store.id %>"><li><%= @stores.name %></li></a>
-    <% end %>
-  <% else %>
-    <p>there are no recipes to display.</p>
-  <% end %>
-</ul>
-
-<h1>Add a new store:</h1>
+<div class="container">
+  <h2>Shoe Distribution:</h2>
+<h3>Add a new store:</h3>
 <div class="form-control">
-<form action="/" method="post">
-  <label for="name">store name:</label>
-  <input id="name" name="name" type="text">
+  <form action="/" method="post">
+    <label for="name">Select a store:</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Submit</button>
+  </form>
+</div>
 
-  <button type="submit">Submit</button>
+ <p>
+ <% if @stores.any? %>
+<%= @stores.name %>
 
-</form>
+<div class="form-control">
+  <form action="/" method="post">
+    <label for="brand">Brands:</label>
+    <input id="brand" name="brand" type="text">
+    <button type="submit">Submit</button>
 </div>
