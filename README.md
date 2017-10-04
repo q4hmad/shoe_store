@@ -1,44 +1,48 @@
-# _Recipe Box_
+# Shoe Store - Ruby - 9.30.17
 
-##### This application implements many-to-many relationships using Active Record.
+By Qudsia Ahmad
 
-## Technologies Used
+Description/User Stories:
 
-Application: Ruby, Sinatra, Active Record<br>
-Testing: Rspec, Capybara<br>
-Database: Postgres
+A user can add, update, delete and list shoe stores.
+A user can add and list new shoe brands. Shoe brands should include price.
+A user can add shoe brands to a store.
+A user can associate the same brand of shoes with multiple stores.
+A user can see all of the brands a store sells on the individual store page.
+store names and shoe brands are saved with a capital letter no matter how the user enters them.
+Price displays in currency format (typing in 50 should be updated to $50.00.)
+A user cannot enter a blank field.
+All entries for stores and brands are unique.
+Store and brand names to have a maximum of one hundred characters.
+Setup/Installation:
 
-Installation
-------------
-
-```
 $ git clone .......
-```
-
 Install required gems:
-```
-$ bundle install
-```
 
+$ bundle install
 Create databases:
-```
+
 rake db:create
 rake db:schema:load
-```
-
 Start the webserver:
-```
+
 $ ruby app.rb
-```
+Navigate to localhost:4567 in browser.
 
-Navigate to `localhost:4567` in browser.
+Technologies Used
 
+Ruby
+Sinatra
+PostgreSQL/Active Record
+Support and contact details
 
-### License
+If you have any updates or suggestions please contact Qudsia Ahmad or make a contribution to this repository.
 
-_MIT License_
+License
 
-Copyright (c) [2017] [Sara Spink and Qudsia Ahmad]
+MIT License
+
+Copyright (c) [2017] [Qudsia Ahmad]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

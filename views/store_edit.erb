@@ -16,18 +16,6 @@
            <button type="submit">Add brands</button>
       </form>
       <% end %>
-
-      <% if @store.brands().any?() %>
-       <h4>Here are all the brands we currently carry:</h4>
-       <ul>
-        <% @store.brands().each() do |b| %>
-          <li><%= b.brand() %></li>
-        <% end %>
-       </ul>
-       <% else %>
-        <p>There are no brands yet.</p>
-      <% end %>
-
       <form action="/update_store_name/<%= @store.id() %>" method="post">
         <input name="_method" type="hidden" value="patch">
         <label for="name">Update Store Name:</label>
@@ -45,7 +33,7 @@
       <ul>
         <% if @store.brands.any? %>
           <% @store.brands.each do |b| %>
-            <li><%= b.brand %>; $<%= b.price %></li>
+            <li><a href="/stores_add_brand/:id"<%= b.brand %>"> <%= b.brand %> $<%= b.price %></a></li>
             <% end %>
         <% else %>
           <p>There are currently no brands in the inventory.</p>
