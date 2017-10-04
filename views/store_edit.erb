@@ -2,6 +2,33 @@
   <div class="row">
     <div class="col-md-6">
       <h2> Store: <%= @store.name %> </h2>
+       <h4>Select all brands sold at this store:</h4>
+       <% if @brands.any?() %>
+       <form action="/stores_add_brand/<%= @store.id %>" method="post">
+         <input type="hidden" name="_method" value="patch">
+         <% @brands.each() do |b| %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="brand_ids[]" value="<%= b.id() %>"><%= b.brand() %>
+            </label>
+          </div>
+          <% end %>
+           <button type="submit">Add brands</button>
+      </form>
+      <% end %>
+
+      <% if @store.brands().any?() %>
+       <h4>Here are all the brands we currently carry:</h4>
+
+       <ul>
+        <% @store.brands().each() do |b| %>
+          <li><%= b.brand() %></li>
+        <% end %>
+       </ul>
+       <% else %>
+        <p>There are no brands yet. <a href="/brands">Add brands here</a></p>
+      <% end %>
+
       <form action="/update_store_name/<%= @store.id() %>" method="post">
         <input name="_method" type="hidden" value="patch">
         <label for="name">Update Store Name:</label>

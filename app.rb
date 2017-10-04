@@ -68,10 +68,12 @@ patch("/update_brand_name/:id") do
   erb(:brand_update)
 end
 
-patch ("/store/:id/add_brand") do
-  @store = Store.find(params[:id].to_i)
+
+patch("/stores_add_brand/:id") do
+  store_id = params.fetch("id").to_i()
+  @store = Store.find(store_id)
+  brand_ids = params.fetch("brand_ids")
+  @store.update({:brand_ids => brand_id})
   @brands = Brand.all()
-  brand = Brand.find(params['brand_id'])
-  @store.brands.push(brand)
-  erb('store_edit')
+  erb("store_edit")
 end
