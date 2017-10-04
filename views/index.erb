@@ -15,19 +15,20 @@
   <form action="/brand_names" method="post">
     <label for="brand">Current Brands:</label>
     <input id="brand" name="brand" type="text">
+    <label for="price">Current Price:</label>
+    <input id="price" name="price" type="text">
     <button type="submit">Submit</button>
   </form>
 </div>
-  <div class="column-md-6">
     <h3>Shoe Stores:</h3>
     <% @stores.each do |store| %>
     <h3><a href='/each_store/<%= store.id %>/'><%= store.name %></a></h3>
     <% end %>
   </div>
     </div>
-    <h3>Brands:</h3>
-    <% @brands.each do |b| %>
-    <h3><a href='/each_brand/<%= b.id %>/'><%= b.brand %></a></h3>
-    <% end %>
 
+    <h3>Brands and Retail Price:</h3>
+    <% @brands.each do |b| %>
+    <h3><a href='/each_brand/<%= b.id %>/'><%= b.brand %> <%= b.price %></a></h3>
+    <% end %>
 </div>

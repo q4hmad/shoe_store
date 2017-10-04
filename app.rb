@@ -43,7 +43,8 @@ end
 post("/brand_names") do
   @id = params[:id]
   @brand = params["brand"]
-  @brands = Brand.new({:brand => @brand, :id => nil})
+  @price = params["price"]
+  @brands = Brand.new({:brand => @brand, :id => nil, :price => @price})
   if @brands.save()
     redirect ('/')
   else
