@@ -1,4 +1,8 @@
-<h1>Update <%=@store.name() %> information</h1>
+<h1>Learn more about <%=@store.name() %> </h1>
+<h1>Details about <%= @store.name %>:</h1>
+<h3>Check back soon for more!</h3>
+
+<p><a href="/each_store/<%= @store.id() %>/edit">Edit  <%= @store.name() %> info here.</a></p>
 
 <form action="/update_store_name/<%= @store.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
@@ -15,3 +19,4 @@
 
   <button type="submit">Delete Store</button>
 </form>
+<p><a href="/">Return to Main Page</a></p>

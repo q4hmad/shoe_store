@@ -57,9 +57,10 @@ get("/each_brand/:id/") do
 end
 
 patch("/update_brand_name/:id") do
+  id = params.fetch("id")
   brand = params.fetch("brand")
-  price = params.fetch("price").to_i
+  price = params.fetch("price")
   @brand = Brand.find(params.fetch("id").to_i())
-  @brand.update({:brand => brand, :price => price})
+  @brand.update({:brand => brand, :price => price, :id => id})
   erb(:brand_update)
 end
