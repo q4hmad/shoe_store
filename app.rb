@@ -52,6 +52,14 @@ erb(:errors)
 end
 
 get("/each_brand/:id/") do
-  @brand =Brand.find(params.fetch("id").to_i())
-  erb(:brand_detail)
+  @brand = Brand.find(params.fetch("id").to_i())
+  erb(:brand_update)
+end
+
+patch("/update_brand_name/:id") do
+  brand = params.fetch("brand")
+  price = params.fetch("price").to_i
+  @brand = Brand.find(params.fetch("id").to_i())
+  @brand.update({:brand => brand, :price => price})
+  erb(:brand_update)
 end
