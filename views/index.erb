@@ -10,8 +10,21 @@
   </form>
 </div>
 <div>
-  <h3>Shoe Stores:</h3>
-  <% @stores.each do |store| %>
-  <h3><a href='/each_store/<%= store.id %>/'><%= store.name %></a></h3>
-  <% end %>
+<h3>Add a brand:</h3>
+<div class="form-control">
+  <form action="/brand_names" method="post">
+    <label for="brand">Current Brands:</label>
+    <input id="brand" name="brand" type="text">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<h3>Shoe Stores:</h3>
+<% @stores.each do |store| %>
+<h3><a href='/each_store/<%= store.id %>/'><%= store.name %></a></h3>
+<% end %>
+</div>
+<h3>Brands:</h3>
+<% @brands.each do |b| %>
+<h3><a href='/each_brand/<%= b.id %>/'><%= b.brand %></a></h3>
+<% end %>
 </div>

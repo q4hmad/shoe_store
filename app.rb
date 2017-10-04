@@ -33,3 +33,25 @@ patch("/update_store_name/:id") do
   @store.update({:name => name})
   erb(:store_edit)
 end
+
+delete("/store_delete/:id") do
+  @store = Store.find(params.fetch("id").to_i())
+  @store.delete()
+   redirect('/')
+end
+
+post("/brand_names") do
+  @id = params[:id]
+  @brand = params["brand"]
+  @brands = Brand.new({:brand => @brand, :id => nil})
+  if @brands.save()
+    redirect ('/')
+  else
+erb(:errors)
+  end
+end
+
+get("/each_brand/:id/") do
+  @brand =Brand.find(params.fetch("id").to_i())
+  erb(:brand_detail)
+end
