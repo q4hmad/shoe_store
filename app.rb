@@ -70,10 +70,13 @@ end
 
 
 patch("/stores_add_brand/:id") do
-  store_id = params.fetch("id").to_i()
-  @store = Store.find(store_id)
-  brand_ids = params.fetch("brand_ids")
-  @store.update({:brand_ids => brand_id})
-  @brands = Brand.all()
-  erb("store_edit")
+    @store = Store.find(params.fetch('id').to_i)
+    brand_ids = params.fetch('brand_ids')
+    brand_ids.each do |b|
+     brand = Brand.find(b)
+     @store.brands.push(brand)
+   end
+  redirect("/store_edit/#{@store.id}")
+
+erb("store_edit")
 end

@@ -19,14 +19,13 @@
 
       <% if @store.brands().any?() %>
        <h4>Here are all the brands we currently carry:</h4>
-
        <ul>
         <% @store.brands().each() do |b| %>
           <li><%= b.brand() %></li>
         <% end %>
        </ul>
        <% else %>
-        <p>There are no brands yet. <a href="/brands">Add brands here</a></p>
+        <p>There are no brands yet.</p>
       <% end %>
 
       <form action="/update_store_name/<%= @store.id() %>" method="post">
@@ -40,19 +39,19 @@
         <input name="_method" type="hidden" value="delete">
         <button type="submit">Delete Store</button>
       </form>
-      <p><a href="/">Return to Main Page</a></p>
     </div>
     <div class="col-md-6">
       <h2>Brands</h2>
       <ul>
         <% if @store.brands.any? %>
           <% @store.brands.each do |b| %>
-            <li><%= b.brand %>; $<%= "%.2f" %  b.price %></li>
+            <li><%= b.brand %>; $<%= b.price %></li>
             <% end %>
         <% else %>
           <p>There are currently no brands in the inventory.</p>
         <% end %>
       </ul>
+        <p><a href="/">Return to Main Page</a></p>
     </div>
   </div>
 </div>
