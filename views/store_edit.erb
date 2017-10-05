@@ -1,21 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h2> Store: <%= @store.name %> </h2>
-       <h4>Select all brands to add them to the store:</h4>
-       <form action="/stores_add_brand/<%= @store.id %>" method="post">
-         <input type="hidden" name="_method" value="patch">
+      <h2>
+        Store:
+        <%= @store.name %>
+      </h2>
+      <h4>Select all brands to add them to the store:</h4>
+      <form action="/stores_add_brand/<%= @store.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
         <% if @brands.any?() %>
-         <% @brands.each() do |b| %>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="brand_ids[]" value="<%= b.id() %>"><%= b.brand() %>
-            </label>
-          </div>
-          <% end %>
-           <button type="submit">Add brands</button>
+        <% @brands.each() do |b| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="brand_ids[]" value="<%= b.id() %>"><%= b.brand() %>
+          </label>
+        </div>
+        <% end %>
+        <button type="submit">Add brands</button>
       </form>
       <% end %>
+      
       <form action="/update_store_name/<%= @store.id() %>" method="post">
         <input name="_method" type="hidden" value="patch">
         <label for="name">Update Store Name:</label>
@@ -32,14 +36,20 @@
       <h2>Brands</h2>
       <ul>
         <% if @store.brands.any? %>
-          <% @store.brands.each do |b| %>
-            <li><a href="/stores_add_brand/<%= b.id %>"> <%= b.brand %> $<%= b.price %></a></li>
-            <% end %>
-        <% else %>
-          <p>There are currently no brands in the inventory.</p>
+        <% @store.brands.each do |b| %>
+        <li>
+          <a href="/stores_add_brand/<%= b.id %>">
+            <%= b.brand %>
+            $<%= b.price %></a>
+        </li>
+        <% end %>
+      <% else %>
+        <p>There are currently no brands in the inventory.</p>
         <% end %>
       </ul>
-        <p><a href="/">Return to Main Page</a></p>
+      <p>
+        <a href="/">Return to Main Page</a>
+      </p>
     </div>
   </div>
 </div>

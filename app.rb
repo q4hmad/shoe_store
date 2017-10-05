@@ -85,3 +85,14 @@ patch("/stores_add_brand/:id") do
    end
   erb(:store_edit)
 end
+
+patch("/brand_add_store/:id") do
+    @brand = Brand.find(params.fetch('id').to_i)
+    store_ids = params.fetch('store_ids')
+    @stores = Store.all()
+    store_ids.each do |s|
+     store = Store.find(s)
+     @brand.stores.push(store)
+    end
+  erb(:brand_update)
+end
