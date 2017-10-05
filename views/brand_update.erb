@@ -1,16 +1,17 @@
-<div class="container">
-<form action="/update_brand_name/<%= @brand.id() %>" method="post">
-  <input name="_method" type="hidden" value="patch">
-  <label for="brand">Update Brand Name:</label>
-  <input id="brand" name="brand" type="text">
-  <input id="price" name="price" type="text">
-  <button type="submit">Update Price</button>
-</form>
+<h2>Brand: <%= @brand.brand %>, Price: $<%= @brand.price%></h2>
 
+<div class="row">
+  <div class="col-md-6">
+    <form action="/update_brand_name/<%= @brand.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input id="brand" name="brand" type="text" placeholder="Update Brand Name">
+      <input id="price" name="price" type="text" placeholder="Update Brand Price">
+      <button type="submit">Update Price</button>
+    </form>
+    <br>
+    <h4>Updated <%= @brand.brand %> information.</h4>
+  </div>
 
-
-
-
-
-<h1>Updated <%= @brand.brand %>  and <%= @brand.price  %>information.</h1>
+  <div class="col-md-6">
+  </div>
 </div>

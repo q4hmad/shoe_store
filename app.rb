@@ -34,8 +34,14 @@ erb(:errors)
   end
 end
 
-get("/each_store/:id/") do
-  @store =Store.find(params.fetch("id").to_i())
+get("/each_brand/:id/") do
+  @brand = Brand.find(params.fetch("id").to_i())
+  @stores = Store.all()
+  erb(:store_edit)
+end
+
+get("/stores/:id") do
+  @store = Store.find(params.fetch("id").to_i())
   @brands = Brand.all()
   erb(:store_edit)
 end
@@ -53,7 +59,7 @@ delete("/store_delete/:id") do
    redirect('/')
 end
 
-get("/each_brand/:id/") do
+get("/each_brand/:id") do
   @brand = Brand.find(params.fetch("id").to_i())
   @stores = Store.all()
   erb(:brand_update)

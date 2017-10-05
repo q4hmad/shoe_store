@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-md-6">
       <h2> Store: <%= @store.name %> </h2>
-       <h4>Select all brands sold at this store:</h4>
-       <% if @brands.any?() %>
+       <h4>Select all brands to add them to the store:</h4>
        <form action="/stores_add_brand/<%= @store.id %>" method="post">
          <input type="hidden" name="_method" value="patch">
+        <% if @brands.any?() %>
          <% @brands.each() do |b| %>
           <div class="checkbox">
             <label>
@@ -33,7 +33,7 @@
       <ul>
         <% if @store.brands.any? %>
           <% @store.brands.each do |b| %>
-            <li><a href="/stores_add_brand/:id"<%= b.brand %>"> <%= b.brand %> $<%= b.price %></a></li>
+            <li><a href="/stores_add_brand/<%= b.id %>"> <%= b.brand %> $<%= b.price %></a></li>
             <% end %>
         <% else %>
           <p>There are currently no brands in the inventory.</p>
